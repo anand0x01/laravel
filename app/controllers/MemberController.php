@@ -13,7 +13,7 @@ class MemberController extends Controller
         {
             return \shub\DashboardHandler::User1();
         }
-        App::abort(404);
+        var_dump(Auth::user());
     }
 
     public function postResume()
