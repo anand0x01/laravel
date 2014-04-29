@@ -1,0 +1,54 @@
+
+<?php $__env->startSection('content'); ?>
+<div class="dashboard_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-3">
+                <?php echo $__env->make('partials.snav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            </div>
+            <div class="col-xs-9 ox_cont">
+                <h3 class="thin_text small_heading">Dashboard</h3>
+                <hr class="small_line" />
+                <?php if(Session::has('msg')): ?>
+                <div class="alert alert-info alert-plain fade in">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                      <p><?php echo Session::get('msg'); ?></p>
+                </div>
+                <?php endif; ?>
+                <p class="text-success">Below you will find a listing of all your classified ads. Click on one of the options to perform a specific task. If you have any questions, please contact the site administrator.</p>
+                <?php if(false): ?>
+                    <p class="">You have not created any ad yet. You can <a href="#">Create a new ad</a> or start searching.</p>
+                <?php else: ?>
+                    <table class="table small_p">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Status</th>
+                            <th>Options</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($projects as $index => $project): ?>
+                            <tr>
+                              <td><?php echo $index + 1; ?></td>
+                              <td>
+                                <p><?php echo $project->getTitle(); ?></p>
+                                <p><a href="#"><?php echo $project->sourceType(); ?></a> | <?php echo $project->fcreatedOn(); ?></p>
+                              </td>
+                              <td><?php echo $project->getStatus(); ?></td>
+                              <td>
+                                <p><a href="<?php echo URL::route('dbd.mng', array($project->id)); ?>">Manage</a></p>
+                              </td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('lfooter', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

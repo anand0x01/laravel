@@ -1,0 +1,44 @@
+<div class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand pjax-link" href="<?php echo URL::route('home'); ?>">SenseiHub</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav">
+        <?php if(Auth::check()): ?>
+        <li><a class="pjax-link" href="<?php echo URL::route('ads'); ?>">Listings</a></li>
+        <?php endif; ?>
+        <li class=""><a class="pjax-link" href="<?php echo URL::route('faqs'); ?>">FAQ'S</a></li>
+        <li><a class="pjax-link" href="<?php echo URL::route('contact'); ?>">Contact Us</a></li>
+        <li><a class="pjax-link" href="<?php echo URL::route('pricing'); ?>">Pricing</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+
+        <?php if(Auth::check()): ?>
+
+           <li class="dropdown">
+             <a non-ajax href="#" class="dropdown-toggle" style="" data-toggle="dropdown"><?php echo Auth::user()->name; ?><b class="caret"></b></a>
+             <ul class="dropdown-menu">
+               <li><a href="<?php echo URL::route('dbd'); ?>">Dashboard</a></li>
+               <li><a href="#">Settings</a></li>
+               <li class="divider"></li>
+               <li><a class="pjax-link" href="<?php echo URL::route('logout'); ?>">Logout</a></li>
+             </ul>
+           </li>
+
+        <?php else: ?>
+
+          <li><a class="pjax-link" href="<?php echo URL::route('register'); ?>">Register</a></li>
+          <li><a class="pjax-link" href="<?php echo URL::route('login'); ?>">Login</a></li>
+
+        <?php endif; ?>
+      </ul>
+    </div>
+  </div>
+</div>
+

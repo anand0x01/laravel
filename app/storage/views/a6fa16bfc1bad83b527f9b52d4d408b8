@@ -1,0 +1,37 @@
+<?php $__env->startSection('body_class'); ?> dashboard_pp_0x <?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<div class="container dashboard_wrapper p_ad_vw">
+  <div class="row">
+      <div class="col-xs-12">
+        <h4><?php echo $adver->getTitle(); ?></h4>
+        <hr />
+      </div>
+      <div class="col-xs-12 col-sm-2">
+        <img class="p_db_i img-responsive" src="<?php echo URL::asset($adver->getImageUrl()); ?>">
+      </div>
+      <div class="col-xs-12 col-sm-10">
+        <p><strong>Sector : </strong><?php echo $adver->sectorName(); ?></p>
+        <p><strong>Project Type : </strong><?php echo $adver->projectType(); ?></p>
+        <p><strong>Contact : </strong><?php echo $adver->getContact(); ?></p>
+        <p><strong>Open for : </strong><?php echo $adver->getDegrees(); ?></p>
+        <p><strong>Started On : </strong><?php echo $adver->createdTill(); ?></p>
+        <p class="text-success"><strong >Students Needed : </strong><span ><?php echo $adver->studentsNo(); ?></span></p>
+      </div>
+      <div class="col-xs-12">
+        <hr />
+        <ul class="nav nav-pills">
+          <li  class="active"><a href="<?php echo URL::route('ads.pview', $adver->getSlugData()); ?>">Details</a></li>
+          <?php if(Auth::user()->isStudent()): ?>
+          <li><a href="<?php echo URL::route('ads.papply', $adver->getSlugData()); ?>">Apply</a></li>
+          <li><a href="<?php echo URL::route('ads.pdoubt', $adver->getSlugData()); ?>">Doubts</a></li>
+          <?php endif; ?>
+        </ul>
+        <div class="p_ad_tx">
+          <?php echo $adver->formattedDesc(); ?>
+        </div>
+      </div>
+  </div>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

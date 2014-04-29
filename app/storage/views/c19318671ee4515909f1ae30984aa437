@@ -1,0 +1,28 @@
+<?php $__env->startSection('body_class'); ?> dashboard_pp_0x <?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<div class="search_results_zone">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-9">
+        <h4 class="text-info thin_text">Showing from <?php echo $advers->count(); ?> projects.</h4>
+        <hr />
+        <?php foreach ($advers as $adver): ?>
+          <div class="media">
+              <div class="pull-left">
+                  <img class="media-object" width="64px" height="64px" src="<?php echo URL::asset($adver->getImageUrl()); ?>" alt=".media-object">
+              </div>
+              <div class="media-body">
+                  <h4 class="media-heading"><a href="<?php echo URL::route('ads.pview', $adver->getSlugData()); ?>" class="thin_text h4_link" title=""><?php echo $adver->getTitle(); ?></a></h4>
+                  <?php echo $adver->formattedDesc(200); ?>
+              </div>
+          </div>
+          <hr />
+        <?php endforeach; ?>
+        <?php echo $advers->links(); ?>
+      </div>
+    </div>
+  </div>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

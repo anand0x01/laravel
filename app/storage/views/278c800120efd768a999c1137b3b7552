@@ -1,0 +1,24 @@
+
+<?php $__env->startSection('content'); ?>
+
+<div class="container form_block">
+    <div class="row">
+        <div class="col-xs-12">
+            <p>Sorry but it seems your university domain name is yet to be approved from <b>SenseiHub</b>. </p>
+            <p>Here is the list of all universities along with their domain names validated by us.</p>
+
+            <?php if(isset($univs) && count($univs)): ?>
+            <ol>
+                <?php foreach ($univs as $univ): ?>
+                    <li><strong><?php echo $univ->name; ?></strong> - (<?php echo $univ->domain; ?>)</li>
+                <?php endforeach; ?>
+            </ol>
+            <?php endif; ?>
+
+        </div>
+    </div>
+</div>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('lfooter', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,34 @@
+
+<?php $__env->startSection('content'); ?>
+<div class="dashboard_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-3">
+              <?php echo $__env->make('partials.1snav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            </div>
+            <div class="col-xs-9 ox_cont">
+                <h3 class="thin_text small_heading">Dashboard</h3>
+                <hr class="small_line" />
+                <?php if(is_null($student->resume)): ?>
+                <p>You have not uploaded your resume upload your resume upload your resume for better chances of getting selected.</p>
+                <form action="<?php echo URL::route('dbd.sr'); ?>" role="form" method="post" enctype="multipart/form-data">
+                  <?php echo Form::token(); ?>
+                  <div class="form-group">
+                      <label for="resume"><b>Your resume in pdf</b></label>
+                      <input type="file" name="resume" required>
+                      <?php if($errors->has('resume')): ?>
+                      <?php echo $errors->first('resume', '<span class="help-block"><small class="text-danger">:message</small></span>'); ?>
+                      <?php endif; ?>
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-plain">Submit</button>
+                </form>
+                <?php else: ?>
+                <p>You have already uploaded you resume explore the listings section to explore ads as per your intrest.</p>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('lfooter', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

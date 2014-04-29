@@ -1,0 +1,7 @@
+<div class="profile">
+  <img  src="<?php echo URL::asset(Auth::user()->displayPic()); ?>" alt="..." class="img-responsive">
+  <div class="profile_stats">
+    <p><?php echo Auth::user()->name; ?></p>
+    <p><a href="#"><?php echo Auth::user()->email; ?></a></p>
+  </div>
+</div>
