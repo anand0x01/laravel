@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="bootstrap/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="false"
+>
+    <testsuites>
+        <testsuite name="Application Test Suite">
+            <directory>./app/tests/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
+--
+
+ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAkez9SeQla2EBxMfrgLGMyzMyKQY0x6LlCuzIIvEEdmhVSff+gpIjngh3TKSK12kYQfLuiIaeeGS8BUn0Otopqm5lTGJJEEt5JAde09Annep0uJDDFI/NrcYRwF+kpccssAOIlRCJ4rZargQGCBJHzFOiyCdfEBYVE1e/wabYw3cz8Os5sbYZo8BKfhA7klt/iMhnxCUpYhkzb/XabcjaQ/dV4pcR6MizzoRzd5A8jOjHJSBPc5CKeAXcZ/WQHiGYO8KhDerAbHnAM9P7ZPdmwQgY3s9Q0Ilzp8zdToPD/INeT1365oUBREZlFoe75Cm4mUxiuiq2awGoX7OjXN+TMw== rsa-key-20140428
