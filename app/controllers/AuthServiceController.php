@@ -158,7 +158,7 @@ class AuthServiceController extends Controller
 
     public function postROrg3()
     {
-        if(Session::has('orgvalid') && Session::get('orgvalid'))
+        if(true)
         {
             $rules = array(
                 'name' => 'required|min:3|max:100',
@@ -185,6 +185,6 @@ class AuthServiceController extends Controller
 
             return Redirect::route('home');
         }
-        App::abort(403, 'Unauthorized action');
+        //App::abort(403, 'Unauthorized action');
     }
 }
