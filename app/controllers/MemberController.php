@@ -5,11 +5,11 @@ class MemberController extends Controller
     public function getDashboard()
     {
         $utype = Auth::user()->user_type;
-        if($utype === 3)
+        if($utype == "3")
         {
             return \shub\DashboardHandler::User3();
         }
-        elseif($utype === 1)
+        elseif($utype == "1")
         {
             return \shub\DashboardHandler::User1();
         }
@@ -65,7 +65,7 @@ class MemberController extends Controller
             App::abort(403, 'You don\' have rights to manage this project.');
         }
     }
-    
+
     public function getMDoubts($id)
     {
         $adver = Adver::findOrFail($id);
@@ -89,29 +89,29 @@ class MemberController extends Controller
             App::abort(403, 'You don\' have rights to manage this project.');
         }
     }
-    
+
     public function postSAnswer($id)
     {
         $adver = Adver::findOrFail($id);
-        
+
         if($adver->hasManageRights())
         {
             $rules = array(
                 'question_id' => 'required|integer',
                 'answer' => 'required|min:2'
             );
-            
+
             $v = Validator::make(Input::all(), $rules);
-            
+
             if($v->fails())
             {
                 return Redirect::back()->withErrors($v)->with('valid', 'Form Validation error.');
             }
-            
+
             $ques = Adoubt::where('adver_id', $id)->findOrFail(Input::get('question_id'));
             $ques->answer = htmlentities(trim(Input::get('answer')));
             $ques->save();
-            
+
             return Redirect::back();
         }
         else
@@ -119,7 +119,7 @@ class MemberController extends Controller
             App::abort(403, 'You don\' have rights to manage this project.');
         }
     }
-    
+
     public function getDResume($hash)
     {
         $hasher = new \shub\HashIds();
@@ -134,18 +134,18 @@ class MemberController extends Controller
                                 ->where('user_id', $decrypt_arr[2])
                                 ->findOrFail($decrypt_arr[1]);
                 $student = Student::findOrFail($decrypt_arr[3]);
-                
+
                 $headers = array(
                   'Content-Type: application/pdf',
                 );
-                
+
                 if(is_null($student->resume))
                 {
                     App::abort(404);
                 }
-                
+
                 $file = public_path() . '/' . $student->resume;
-                
+
                 return Response::download($file, $hash.'.pdf', $headers);
             }
             else
@@ -158,17 +158,17 @@ class MemberController extends Controller
             App::abort(404);
         }
     }
-    
+
     public function getMResponses($id)
     {
         $adver = Adver::findOrFail($id);
-        
+
         if($adver->hasManageRights())
         {
             $responses = $adver->responses()->with('user','user.students')->paginate(10);
-            
+
             $hasher = new \shub\HashIds();
-            
+
             return View::make('member.manage.mresponses', compact('adver', 'responses', 'hasher'));
         }
         else
@@ -176,6 +176,6 @@ class MemberController extends Controller
             App::abort(403, 'You don\' have rights to manage this project.');
         }
     }
-    
-    
+
+
 }
