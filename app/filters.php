@@ -39,6 +39,12 @@ App::after(function($request, $response)
 |
 */
 
+Route::filter('ajax', function()
+{
+    if(!Request::ajax())
+        App::abort(412, 'Non-ajax requests are not allowed.');
+});
+
 Route::filter('auth', function()
 {
     if (Auth::guest()) return Redirect::guest('login');
@@ -61,7 +67,7 @@ Route::filter('company_guy', function()
 
 Route::filter('student_only', function()
 {
-    if(!Auth::user()->isStudent()) App::abort(401, 'This section is only open for students.');
+    if(!Auth::user()->isStudent()) App::abort(403, 'This section is only open for students.');
 });
 
 Route::filter('auth.basic', function()
@@ -102,6 +108,6 @@ Route::filter('csrf', function()
 
     if (Session::token() != $token)
     {
-        return Redirect::to('/');
+        App::abort(403, 'Session token mismatch.');
     }
 });

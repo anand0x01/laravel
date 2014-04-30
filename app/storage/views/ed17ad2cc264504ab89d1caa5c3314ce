@@ -1,0 +1,59 @@
+
+<?php $__env->startSection('content'); ?>
+<div class="dashboard_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-3">
+                <?php echo $__env->make('partials.snav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            </div>
+            <div class="col-xs-9 ox_cont">
+              <h3 class="thin_text small_heading"><?php echo $adver->getTitle(); ?></h3>
+              <hr class="small_line" />
+              <?php echo $__env->make('partials.manage_pills', array('id' => $adver->id), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+              <div class="main_ss_m_cont">
+                <h4 class="">Details</h4>
+                <hr class="small_line" />
+                <dl class="dl-horizontal">
+                  <dt>Status</dt>
+                  <dd><?php echo $adver->getStatus(); ?></dd>
+                  <dt>Active Till</dt>
+                  <dd><?php echo $adver->activeTill(); ?></dd>
+                  <dt>Created On</dt>
+                  <dd><?php echo $adver->createdTill(); ?></dd>
+                  <dt>Total Views</dt>
+                  <dd><?php echo $adver->aviews()->count(); ?></dd>
+                  <dt>Total responses</dt>
+                  <dd><?php echo $adver->responses()->count(); ?></dd>
+                  <dt>Total doubts</dt>
+                  <dd><?php echo $adver->doubts()->count(); ?></dd>
+                </dl>
+                <h4 id="dash_ac_head">Actions</h4>
+                <hr class='small_line' />
+                <?php echo $__env->make('partials.manage_buttons', array('btns' => $adver->getActions()), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                <h4>Information</h4>
+                  <hr class="small_line" />
+                  <div class="project_dash_box">
+                    <div class="row">
+                      <div class="col-sm-3">
+                          <img class="p_db_i img-responsive" src="<?php echo URL::asset($adver->getImageUrl()); ?>">
+                      </div>
+                      <div class="col-sm-9">
+                        <p><strong>Title : </strong><?php echo $adver->getTitle(); ?></p>
+                        <p><strong>Sectors : </strong><?php echo $adver->sectorName(); ?></p>
+                        <p><strong>Contact : </strong><?php echo $adver->getContact(); ?></p>
+                        <p><strong>Degrees : </strong><?php echo $adver->getDegrees(); ?></p>
+                      </div>
+                      <div class="col-xs-12 p_db_dsc">
+                        <?php echo $adver->formattedDesc(); ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('lfooter', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

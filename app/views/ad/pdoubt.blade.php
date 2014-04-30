@@ -82,7 +82,7 @@
           <h4 class="modal-title">Ask Question</h4>
         </div>
       </div>
-      <form id="__sbmt_q_mod" action="{{ URL::route('ads.pdoubt', $adver->getSlugData()) }}" id="" method="post" accept-charset="utf-8">
+      <form id="__sbmt_q_mod" action="{{ URL::route('ads.pdoubt', $adver->getSlugData()) }}"  method="post" accept-charset="utf-8">
       {{ Form::token() }}
       <div class="modal-body">
         <p><strong>Make sure the question you are about to ask has not been asked before.</strong></p>

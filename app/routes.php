@@ -37,3 +37,17 @@ Route::post('/ads/{hash}/{slug}/doubts', array('uses' => 'AdsController@postPDou
 Route::post('/dashboard/resume', array('as' => 'dbd.sr', 'uses' => 'MemberController@postResume', 'before' => 'csrf|auth|student_only'));
 Route::get('/dashboard/manage/{hash}', array('as' => 'dbd.mng', 'uses' => 'MemberController@getManage', 'before' => 'auth|company_guy'));
 Route::get('/dashboard/manage/{hash}/edit', array('as' => 'dbd.med', 'uses' => 'MemberController@getMEdit', 'before' => 'auth|company_guy'));
+Route::post('dashboard/manage/{hash}/edit', array('uses' => 'AdsController@postEditProject', 'before' => 'csrf|auth|company_guy'));
+Route::get('/dashboard/manage/{hash}/doubts', array('as' => 'dbd.mdbt', 'uses' => 'MemberController@getMDoubts', 'before' => 'auth|company_guy'));
+Route::post('/dashboard/manage/{hash}/doubts', array('uses' => 'MemberController@postSAnswer', 'before' => 'csrf|auth|company_guy'));
+Route::get('/dashboard/manage/{hash}/responses', array('as' => 'dbd.mdr', 'uses' => 'MemberController@getMResponses', 'before' => 'auth|company_guy'));
+Route::get('/resume/{hash}', array('as' => 'dbd.mdrsum', 'uses' => 'MemberController@getDResume', 'before' => 'auth|company_guy'));
+Route::get('/search', array('as' => 'search.p', 'uses' => 'SearchController@getIndex'));
+Route::post('/ladd', array('as' => 'ladd', 'uses' => 'SearchController@postList', 'before' => 'ajax|auth|company_guy'));
+Route::post('/lrmv', array('as' => 'lrmv', 'uses' => 'SearchController@postRemove', 'before' => 'ajax|auth|company_guy'));
+/*Route::get('/', function()
+{
+    $list = Auth::user()->tlists()->with('student')->get();
+    var_dump($list[0]);
+    var_dump(DB::getQueryLog());
+});*/

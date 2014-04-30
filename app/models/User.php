@@ -19,9 +19,18 @@ class User extends Eloquent implements UserInterface, RemindableInterface
 		});
 	}
 
+	public function scopeSearchable($query)
+	{
+	    return $query->where('user_type', 1)
+	    			->whereNotIn('id', function($query)
+    				{
+    					$query->select('student_id')->from('tmplists')->where('user_id', Auth::user()->id);
+    				});
+	}
+
 	public function students()
 	{
-		$this->hasOne('Student', 'user_id');
+		return $this->hasOne('Student', 'user_id');
 	}
 
 	public function advers()
@@ -29,6 +38,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface
 	    if($this->user_type != 1)
 	        return $this->hasMany('Adver', 'user_id');
 	    App::abort(404);
+	}
+
+	public function tlists()
+	{
+		return $this->hasMany('Mtmplist', 'user_id');
 	}
 
 	public function getAuthIdentifier()
@@ -80,5 +94,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface
 	public function displayPic()
 	{
 		return 'media/img/avatar-blank.jpg';
+	}
+
+	public function getSkills()
+	{
+		return 'Not provided';
 	}
 }

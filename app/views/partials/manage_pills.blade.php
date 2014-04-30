@@ -8,7 +8,8 @@ HTML::macro('pill_stat', function($_args){
 ?>
 <ul class="nav nav-pills">
 {{ HTML::pill_stat(array(
-    array(URL::route('dbd.mng', array($id)), 'Details'), array('#', 'Responses'), array('#', 'Doubts'), array('#', 'Edit')
+    array(URL::route('dbd.mng', array($id)), 'Details'), 
+    array(URL::route('dbd.mdr', array($id)), 'Responses'), array(URL::route('dbd.mdbt', array($id)), 'Doubts'), array(URL::route('dbd.med', array($id)), 'Edit')
     ))
 }}
 </ul>

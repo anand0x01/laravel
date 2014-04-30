@@ -158,7 +158,7 @@ class AuthServiceController extends Controller
 
     public function postROrg3()
     {
-        if(true)
+        if(Session::has('orgvalid'))
         {
             $rules = array(
                 'name' => 'required|min:3|max:100',

@@ -7,6 +7,7 @@
       <div class="col-xs-12 col-md-9">
         <h4 class="text-info thin_text">Showing from {{ $advers->count() }} projects.</h4>
         <hr />
+        @if(!is_null($advers))
         @foreach ($advers as $adver)
           <div class="media">
               <div class="pull-left">
@@ -20,6 +21,7 @@
           <hr />
         @endforeach
         {{ $advers->links() }}
+        @endif
       </div>
     </div>
   </div>

@@ -23,7 +23,7 @@ module.exports = function(grunt){
         uglify: {
             build: {
               files: {
-                'js/app_version1.js': ['js/pjax.js', 'js/nprogress.js', 'js/app.js']
+                'js/app_version1.js': ['js/pjax.js', 'js/nprogress.js', 'js/app.js' ,'js/loggedin.js']
               }
             }
         }

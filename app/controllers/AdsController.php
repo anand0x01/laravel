@@ -140,8 +140,6 @@ class AdsController extends Controller
     public function getPView($id, $slug)
     {
         $adver = Adver::listable()->findOrFail($id);
-        if($adver->getSlugData()[1] !== $slug)
-            return Redirect::route('ads.pview', $adver->getSlugData());
 
         $nview = new Adview;
         $nview->user_id = Auth::user()->id;
@@ -154,8 +152,6 @@ class AdsController extends Controller
     public function getPApply($id, $slug)
     {
         $adver = Adver::listable()->findOrFail($id);
-        if($adver->getSlugData()[1] !== $slug)
-            return Redirect::route('ads.pview', $adver->getSlugData());
         $response = $adver->responses()->where('user_id', Auth::user()->id)->first();
         return View::make('ad.presponse', compact('adver', 'response'));
     }
@@ -182,8 +178,6 @@ class AdsController extends Controller
     public function getPDoubt($id, $slug)
     {
         $adver = Adver::listable()->findOrFail($id);
-        if($adver->getSlugData()[1] !== $slug)
-            return Redirect::route('ads.pdoubt', $adver->getSlugData());
         $doubts = $adver->doubts;
         $solved = array();
         $unsolved = array();
@@ -212,5 +206,67 @@ class AdsController extends Controller
         $doubt->doubt = htmlentities(trim(Input::get('question')));
         $doubt->save();
         return Redirect::back();
+    }
+    
+    public function postEditProject($id)
+    {
+        $adver = Adver::findOrFail($id);
+        if($adver->hasManageRights())
+        {
+            $rules = array(
+                'title' => 'required|between:5,256',
+                'sector' => 'required',
+                'project_type' => 'required',
+                'description' => 'required',
+                'phone' => 'required|min:10',
+                'degree' => 'required',
+                'n_stu' => 'required|integer|max:999|min:1',
+                'images' => 'image|max:10240'
+            );
+    
+            $attributes = array(
+                'project_type' => 'project type',
+                'n_stu' => 'number of students'
+            );
+    
+            $v = Validator::make(Input::all(), $rules, $attributes);
+    
+            if($v->fails())
+            {
+                return Redirect::back()->withErrors($v);
+            }
+            
+            DB::transaction(function () use (&$adver)
+            {
+                $adver->title = trim(Input::get('title'));
+                $adver->save();
+    
+                $snad = Advernormals::where('adver_id', $adver->id)->first();
+                $snad->sector_id = Input::get('sector');
+                $snad->type_sm = in_array('t_s_m', Input::get('project_type'));
+                $snad->type_mr = in_array('t_m_r', Input::get('project_type'));
+                $snad->type_pd = in_array('t_p_d', Input::get('project_type'));
+                $snad->description = htmlentities(trim(Input::get('description')));
+                $snad->phone = Input::get('phone');
+                $snad->degree_ug = in_array('d_u', Input::get('degree'));
+                $snad->degree_g = in_array('d_g', Input::get('degree'));
+                $snad->degree_phd = in_array('d_p', Input::get('degree'));
+                
+                $image_uploaded = \shub\FormHandler::uploadImage('images');
+                if(!is_null($image_uploaded))
+                {
+                    $snad->image = $image_uploaded;
+                }
+                
+                $snad->students = Input::get('n_stu');
+                $snad->save();
+            });
+            
+            return Redirect::back()->with('success', 'Updated');
+        }
+        else
+        {
+            App::abort(403, 'You don\' have rights to manage this project.');
+        }
     }
 }

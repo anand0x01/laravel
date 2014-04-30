@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SenseiHub</title>
+    <link rel="stylesheet" href="<?php echo URL::asset('css/app_version1.css'); ?>">
+    <meta name="csrf-token" content="<?php echo csrf_token(); ?>">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <?php echo HTML::script('js/jquery-1.11.0.min.js'); ?>
+    <?php echo HTML::script('js/bootstrap.min.js'); ?>
+    <?php echo HTML::script('js/app_version1.js'); ?>
+</head>
+<body class="<?php echo $__env->yieldContent('body_class'); ?>">
+    <?php echo $__env->make('navbar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php echo $__env->yieldContent('content'); ?>
+</body>
+</html>
