@@ -123,6 +123,7 @@ return array(
 		#'Frenzy\Turbolinks\TurbolinksServiceProvider',
 		'Turbo\Provider\Laravel\TurboServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
+		'Orangehill\Iseed\IseedServiceProvider'
 	),
 
 	/*

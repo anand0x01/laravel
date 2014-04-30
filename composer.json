@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.1.28",
 		"rcrowe/turbo": "0.2.1",
-		"intervention/image": "dev-master"
+		"intervention/image": "dev-master",
+		"orangehill/iseed": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
