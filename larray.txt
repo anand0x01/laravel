@@ -1,0 +1,6 @@
+ShubMessages;
+    timestamps
+    sender_id integer; unsigned
+    reciever_id integer; unsigned
+    message text
+    checker integer

@@ -45,6 +45,8 @@ Route::get('/resume/{hash}', array('as' => 'dbd.mdrsum', 'uses' => 'MemberContro
 Route::get('/search', array('as' => 'search.p', 'uses' => 'SearchController@getIndex'));
 Route::post('/ladd', array('as' => 'ladd', 'uses' => 'SearchController@postList', 'before' => 'ajax|auth|company_guy'));
 Route::post('/lrmv', array('as' => 'lrmv', 'uses' => 'SearchController@postRemove', 'before' => 'ajax|auth|company_guy'));
+
+Route::get('/workroom', array('as' => 'wrm', 'uses' => 'WorkRoomController@get_index'));
 /*Route::get('/', function()
 {
     $list = Auth::user()->tlists()->with('student')->get();

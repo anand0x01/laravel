@@ -1,0 +1,134 @@
+@extends('lfooter')
+
+@section('content')
+<div class="container dashboard_wrapper p_ad_vw">
+    <div class="row">
+        <div class="col-xs-6">
+            <h4 class='mild_title'>Title of the project</h4>
+            <span class="light_text">Welcome, Name user</span>
+        </div>
+        <div class="col-xs-6">
+            <ul class="list-inline">
+                <li style="padding: 0 20px;">
+                    <div class="value">
+                        <h4 class='mild_title'>Days left</h4>
+                        <div class="progress progress-striped active" style="height:8px; margin:10px 0;">
+                            <div class="progress-bar progress-bar-success" style="width: 48%">
+                                <span class="sr-only">18% Complete</span>
+                            </div>
+                        </div>
+                        <span class="light_text">4 days left</span>
+                    </div>
+                </li>
+                <li style="padding: 0 20px;">
+                    <div class="value">
+                        <h4 class='mild_title'>Tasks left</h4>
+                        <div class="progress progress-striped active" style="height:8px; margin:10px 0;">
+                            <div class="progress-bar progress-bar-warning" style="width: 70%">
+                                <span class="sr-only">18% Complete</span>
+                            </div>
+                        </div>
+                        <span class="light_text">4 out of 13</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-12">
+            <ul class="nav nav-pills alter_nav_container">
+                <li class="active"><a href="#">WorkHome</a></li>
+                <li><a href="#">Assign task</a></li>
+                <li><a href="#">Messages</a></li>
+            </ul>
+        </div>
+        <div class="col-xs-12">
+            <div id="task_allocation_panel" class="panel panel-info">
+                <div class="panel-heading">
+                    Tasks Allocated
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>For</th>
+                                <th>Discuss</th>
+                                <th>Status</th>
+                                <th>Started</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bug Fixes</td>
+                                <td>
+                                    <p>Name student 1</p>
+                                </td>
+                                <td><a href="#" title="Discuss">Discuss</a></td>
+                                <td>Ongoing</td>
+                                <td>4 hours ago</td>
+                            </tr>
+                            <tr>
+                                <td>A long task name</td>
+                                <td>
+                                    <p>student 2</p>
+                                </td>
+                                <td><a href="#" title="Discuss">Discuss</a></td>
+                                <td>Ongoing</td>
+                                <td>4 hours ago</td>
+                            </tr>
+                            <tr class="">
+                                <td>Please give us more details about how the problem occurred and go to the Help Center for more details about known issues.</td>
+                                <td>
+                                    <p>Name student 1</p>
+                                </td>
+                                <td><a href="#" title="Discuss">Discuss</a></td>
+                                <td>Ongoing</td>
+                                <td>4 hours ago</td>
+                            </tr>
+                            <tr class="completed_task">
+                                <td>How a complted task looks.</td>
+                                <td>
+                                    <p>Name student 1</p>
+                                </td>
+                                <td><a href="#" class="disabled" title="Discuss">Discuss</a></td>
+                                <td>Completed</td>
+                                <td>Finished</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div id="" class="panel panel-warning">
+                <div class="panel-heading">
+                    Notice Board
+                </div>
+                <div class="panel-body">
+                    <ul class="list-unstyled">
+                        <li>
+                            <h5>Deadline changed - 12th May</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <hr />
+                        </li>
+                        <li>
+                            <h5>Notice number 2- 12th May</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <hr />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@stop

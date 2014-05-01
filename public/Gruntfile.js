@@ -9,14 +9,15 @@ module.exports = function(grunt){
             },
             files: {
               "css/app.css": "css/app.less",
-              "css/c_v1.css": "css/c_v1.less"
+              "css/c_v1.css": "css/c_v1.less",
+              "css/workroom.css": "css/workroom.less"
             }
           }
         },
         cssmin: {
           combine: {
             files: {
-              'css/app_version1.css': ['css/app.css', 'css/c_v1.css']
+              'css/app_version1.css': ['css/app.css', 'css/c_v1.css', 'css/workroom.css']
             }
           }
         },
@@ -32,5 +33,6 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.registerTask('default', ['less', 'cssmin', 'uglify']);
+    //grunt.registerTask('default', ['less', 'cssmin', 'uglify']);
+    grunt.registerTask('default', ['less', 'cssmin']);
 };
