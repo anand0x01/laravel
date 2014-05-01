@@ -4,7 +4,7 @@ $.ajaxSetup({
     }
 });
 
-$.pjax.disable()
+//$.pjax.disable()
 
 $(document).on('pjax:start', function () {
     NProgress.start();
