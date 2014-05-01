@@ -48,7 +48,7 @@ Route::filter('ajax', function()
 Route::filter('auth', function()
 {
     if (Auth::guest()) return Redirect::guest('login');
-    if(Auth::user()->user_type == 2)
+    if(Auth::user()->user_type == "2")
     {
         Session::flash('orgstep3', true);
         return Redirect::route('org3');

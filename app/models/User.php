@@ -35,7 +35,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface
 
 	public function advers()
 	{
-	    if($this->user_type != 1)
+	    if($this->user_type != "1")
 	        return $this->hasMany('Adver', 'user_id');
 	    App::abort(404);
 	}
@@ -77,12 +77,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface
 
 	public function isCompanyGuy()
 	{
-		return $this->user_type !== 1;
+		return $this->user_type != "1";
 	}
 
 	public function isStudent()
 	{
-		return $this->user_type === 1;
+		return $this->user_type == "1";
 	}
 
 	public function getDomain()
